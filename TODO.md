@@ -5,10 +5,9 @@
 
 ## [In Progress]
 - [WS-30] Define product requirements (BA)
-- [WS-29] Plan UI interaction and layout (UX)
 
 ## [Review]
-- None
+- [WS-29] Plan UI interaction and layout (UX)
 
 ## [Done]
 - [WS-28] Initialize repository and folder structure (Git Init)
