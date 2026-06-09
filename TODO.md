@@ -3,6 +3,9 @@
 ## [Backlog]
 
 ## [In Progress]
+- [DEMO-10] 高级计算与常数存储开发周期 (PM) - In Progress
+- [DEMO-13] 高级计算与常数存储功能需求分析 (BA) - In Progress
+- [DEMO-14] 高级计算与常数存储功能交互设计 (UX) - In Progress
 
 ## [Review]
 
