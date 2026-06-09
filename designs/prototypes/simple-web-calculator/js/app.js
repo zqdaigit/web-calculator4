@@ -12,7 +12,7 @@
   const shortcutsModal = document.querySelector("#shortcutsModal");
   const confirmModal = document.querySelector("#confirmModal");
 
-  const symbols = { "+": "+", "-": "−", "*": "×", "/": "÷" };
+  const symbols = { "+": "+", "-": "−", "*": "×", "/": "÷", "^": "^" };
   const keyboardMap = {
     Enter: "equals", "=": "equals", Backspace: "backspace", Delete: "backspace",
     Escape: "ac", c: "clear", C: "clear", "%": "percent",
@@ -88,15 +88,55 @@
     const right = Number(state.operand2);
     const formula = `${state.operand1} ${symbols[state.operator]} ${state.operand2}`;
     if (state.operator === "/" && right === 0) return lockWith("Error");
+    if (state.operator === "^") {
+      if (left === 0 && right < 0) return lockWith("Error");
+      if (left < 0 && !Number.isInteger(right)) return lockWith("Error");
+    }
     let value;
     if (state.operator === "+") value = left + right;
     if (state.operator === "-") value = left - right;
     if (state.operator === "*") value = left * right;
     if (state.operator === "/") value = left / right;
+    if (state.operator === "^") value = Math.pow(left, right);
     if (!validateSafe(value)) return;
     const formatted = formatNumber(value);
     Object.assign(state, { operand1: formatted, operand2: null, operator: null, justCalculated: true });
     if (addToHistory) addHistory(formula, formatted);
+    updateDisplay();
+  }
+  function calculateSquare() {
+    const valStr = currentValue();
+    const val = Number(valStr);
+    const resultVal = val * val;
+    if (!validateSafe(resultVal)) return;
+    const formatted = formatNumber(resultVal);
+    setCurrent(formatted);
+    state.justCalculated = true;
+    addHistory(`sqr(${valStr})`, formatted);
+    updateDisplay();
+  }
+  function calculateSqrt() {
+    const valStr = currentValue();
+    const val = Number(valStr);
+    if (val < 0) return lockWith("Error");
+    const resultVal = Math.sqrt(val);
+    if (!validateSafe(resultVal)) return;
+    const formatted = formatNumber(resultVal);
+    setCurrent(formatted);
+    state.justCalculated = true;
+    addHistory(`sqrt(${valStr})`, formatted);
+    updateDisplay();
+  }
+  function calculateLog() {
+    const valStr = currentValue();
+    const val = Number(valStr);
+    if (val <= 0) return lockWith("Error");
+    const resultVal = Math.log10(val);
+    if (!validateSafe(resultVal)) return;
+    const formatted = formatNumber(resultVal);
+    setCurrent(formatted);
+    state.justCalculated = true;
+    addHistory(`log(${valStr})`, formatted);
     updateDisplay();
   }
   function clearCurrent() {
@@ -131,6 +171,9 @@
     if (action === "ac") resetAll();
     if (action === "backspace") backspace();
     if (action === "percent" || action === "negate") transformCurrent(action);
+    if (action === "square") calculateSquare();
+    if (action === "sqrt") calculateSqrt();
+    if (action === "log") calculateLog();
   }
 
   function readHistory() {
