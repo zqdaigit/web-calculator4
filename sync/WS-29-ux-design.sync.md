@@ -22,6 +22,10 @@
   5. **Physical Key Feedback & Help Panel**: Detailed virtual key active state feedback (50ms transition and press feedback) for physical key triggers, and specified layout/content for the physical shortcut help guide modal.
   6. **Physical Shortcut Collection**: Aligned and documented the complete set of physical shortcuts (incorporating `%`, `Delete`, `Escape`, `c`).
   7. **Copy Toast Alignment**: Updated copying toast feedback text to "结果已复制到剪贴板" and defined its 2-second fade-out lifecycle.
+* **Retry 3 Refinement**: Resolved the 3 MAJOR conflicts identified in the Retry 2 audit:
+  1. **Scientific Notation Threshold Boundary**: Aligned the scientific notation display threshold exactly to `>= 1e15` (absolute value).
+  2. **Physical Key Active Feedback的时序**: Unified the `.active` state feedback sequence to persist throughout the key press and immediately recover upon `KeyUp`.
+  3. **Clear Key Shortcut Mapping**: Expanded the keyboard shortcut mapping for the Clear key (`C`) to support both lowercase `c` and uppercase `C`.
 
 ### Deliverables
 * **Design File**: `designs/simple-web-calculator.ux.md`
