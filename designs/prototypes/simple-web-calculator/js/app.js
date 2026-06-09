@@ -12,7 +12,7 @@
   const shortcutsModal = document.querySelector("#shortcutsModal");
   const confirmModal = document.querySelector("#confirmModal");
 
-  const symbols = { "+": "+", "-": "−", "*": "×", "/": "÷" };
+  const symbols = { "+": "+", "-": "−", "*": "×", "/": "÷", "^": "^" };
   const keyboardMap = {
     Enter: "equals", "=": "equals", Backspace: "backspace", Delete: "backspace",
     Escape: "ac", c: "clear", C: "clear", "%": "percent",
@@ -93,6 +93,11 @@
     if (state.operator === "-") value = left - right;
     if (state.operator === "*") value = left * right;
     if (state.operator === "/") value = left / right;
+    if (state.operator === "^") {
+      if (left < 0 && !Number.isInteger(right)) return lockWith("Error");
+      if (left === 0 && right < 0) return lockWith("Error");
+      value = Math.pow(left, right);
+    }
     if (!validateSafe(value)) return;
     const formatted = formatNumber(value);
     Object.assign(state, { operand1: formatted, operand2: null, operator: null, justCalculated: true });
@@ -121,6 +126,41 @@
     state.justCalculated = false;
     updateDisplay();
   }
+  function calculateSingle(action) {
+    const field = currentField();
+    const valStr = state[field] ?? "0";
+    const val = Number(valStr);
+    let resultVal;
+    let formula;
+
+    if (action === "square") {
+      resultVal = val * val;
+      formula = `sqr(${valStr})`;
+    } else if (action === "sqrt") {
+      if (val < 0) {
+        return lockWith("Error");
+      }
+      resultVal = Math.sqrt(val);
+      formula = `sqrt(${valStr})`;
+    } else if (action === "log") {
+      if (val <= 0) {
+        return lockWith("Error");
+      }
+      resultVal = Math.log10(val);
+      formula = `log(${valStr})`;
+    }
+
+    if (!validateSafe(resultVal)) return;
+
+    const formatted = formatNumber(resultVal);
+    state[field] = formatted;
+    
+    if (!state.operator) {
+      state.justCalculated = true;
+    }
+    addHistory(formula, formatted);
+    updateDisplay();
+  }
   function handleAction(action, value) {
     if (state.locked && action !== "ac") return;
     if (action === "digit") inputDigit(value);
@@ -131,6 +171,7 @@
     if (action === "ac") resetAll();
     if (action === "backspace") backspace();
     if (action === "percent" || action === "negate") transformCurrent(action);
+    if (action === "square" || action === "sqrt" || action === "log") calculateSingle(action);
   }
 
   function readHistory() {
