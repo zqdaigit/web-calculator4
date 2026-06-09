@@ -1,14 +1,14 @@
 # TODO
 
 ## [Backlog]
-- Setup initial project structure
 
 ## [In Progress]
-- [WS-31] Consistency review and conflict detection (Sync) - Retry 3
 
 ## [Review]
-- [WS-30] Define product requirements (BA) - Retry 3
-- [WS-29] Plan UI interaction and layout (UX) - Retry 3
 
 ## [Done]
 - [WS-28] Initialize repository and folder structure (Git Init)
+- [WS-30] Define product requirements (BA) - Done
+- [WS-29] Plan UI interaction and layout (UX) - Done
+- [WS-31] Consistency review and conflict detection (Sync) - Done
+- [WS-32] Develop static HTML interaction prototype (Prototype) - Done
