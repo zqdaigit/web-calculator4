@@ -4,8 +4,7 @@
 
 ## [In Progress]
 - [DEMO-10] 高级计算与常数存储开发周期 (PM) - In Progress
-- [DEMO-13] 高级计算与常数存储功能需求分析 (BA) - In Progress
-- [DEMO-14] 高级计算与常数存储功能交互设计 (UX) - In Progress
+- [DEMO-18] 高级计算与常数存储功能一致性检查 - Round 1 (Sync) - In Progress
 
 ## [Review]
 
@@ -21,3 +20,5 @@
 - [DEMO-6] 科学计算功能需求整改 — 补充 ^ 和 log 业务规则 (BA Refinement) - Done
 - [DEMO-7] 科学计算功能需求与交互一致性检查 - Round 2 (Sync) - Done
 - [DEMO-8] 科学计算功能静态交互原型 (Prototype) - Done
+- [DEMO-13] 高级计算与常数存储功能需求分析 (BA) - Done
+- [DEMO-14] 高级计算与常数存储功能交互设计 (UX) - Done
