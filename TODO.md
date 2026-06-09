@@ -1,8 +1,12 @@
 # TODO
 
 ## [Backlog]
+- 科学计算功能双向校验 (Sync)
+- 科学计算功能静态原型开发 (Prototype)
 
 ## [In Progress]
+- [DEMO-4] 科学计算功能需求分析 (BA)
+- [DEMO-3] 科学计算功能交互设计 (UX)
 
 ## [Review]
 
