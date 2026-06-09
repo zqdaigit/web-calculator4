@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Web 计算器</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <main class="app-shell">
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">SIMPLE CALCULATOR</p>
+        <h1>Web 计算器</h1>
+      </div>
+      <div class="toolbar">
+        <button class="tool-button history-toggle" type="button" aria-expanded="false">📜 <span>历史记录</span></button>
+        <button class="tool-button theme-toggle" type="button">🌗 <span>暗黑模式</span></button>
+        <button class="tool-button shortcuts-toggle" type="button">⌨️ <span>快捷键说明</span></button>
+      </div>
+    </header>
+
+    <section class="workspace">
+      <article class="calculator-card" aria-label="计算器">
+        <div class="display">
+          <div id="toastHost" class="toast-host" aria-live="polite"></div>
+          <p id="expression" class="expression">&nbsp;</p>
+          <button id="result" class="result" type="button" title="点击复制结果" aria-label="当前结果，点击复制">0</button>
+          <button class="backspace-button calc-key" data-action="backspace" type="button">⌫ <span>退格</span></button>
+        </div>
+
+        <div class="keypad">
+          <button class="calc-key function-key ac-key" data-action="ac" type="button">AC</button>
+          <button class="calc-key function-key" data-action="clear" type="button">C</button>
+          <button class="calc-key function-key" data-action="percent" type="button">%</button>
+          <button class="calc-key operator-key" data-action="operator" data-value="/" type="button">÷</button>
+
+          <button class="calc-key" data-action="digit" data-value="7" type="button">7</button>
+          <button class="calc-key" data-action="digit" data-value="8" type="button">8</button>
+          <button class="calc-key" data-action="digit" data-value="9" type="button">9</button>
+          <button class="calc-key operator-key" data-action="operator" data-value="*" type="button">×</button>
+
+          <button class="calc-key" data-action="digit" data-value="4" type="button">4</button>
+          <button class="calc-key" data-action="digit" data-value="5" type="button">5</button>
+          <button class="calc-key" data-action="digit" data-value="6" type="button">6</button>
+          <button class="calc-key operator-key" data-action="operator" data-value="-" type="button">−</button>
+
+          <button class="calc-key" data-action="digit" data-value="1" type="button">1</button>
+          <button class="calc-key" data-action="digit" data-value="2" type="button">2</button>
+          <button class="calc-key" data-action="digit" data-value="3" type="button">3</button>
+          <button class="calc-key operator-key" data-action="operator" data-value="+" type="button">+</button>
+
+          <button class="calc-key function-key" data-action="negate" type="button">+/−</button>
+          <button class="calc-key" data-action="digit" data-value="0" type="button">0</button>
+          <button class="calc-key" data-action="decimal" type="button">.</button>
+          <button class="calc-key equals-key" data-action="equals" type="button">=</button>
+        </div>
+        <p class="copy-hint">点击结果即可复制</p>
+      </article>
+
+      <aside class="history-panel" aria-label="历史记录">
+        <div class="history-heading">
+          <div>
+            <p class="eyebrow">SESSION</p>
+            <h2>历史记录</h2>
+          </div>
+          <button class="icon-button history-close" type="button" aria-label="关闭历史记录">×</button>
+        </div>
+        <div id="historyList" class="history-list"></div>
+        <button id="clearHistory" class="clear-history" type="button">🗑️ 清空历史记录</button>
+      </aside>
+    </section>
+  </main>
+
+  <div class="mobile-scrim history-close"></div>
+
+  <div id="shortcutsModal" class="modal-layer" aria-hidden="true">
+    <div class="modal shortcuts-modal" role="dialog" aria-modal="true" aria-labelledby="shortcutsTitle">
+      <div class="modal-heading">
+        <h2 id="shortcutsTitle">物理键盘快捷键指南</h2>
+        <button class="icon-button modal-close" type="button" aria-label="关闭">×</button>
+      </div>
+      <p class="shortcut-summary">快捷键说明：数字 0-9 键、小数点 . 键输入数字；+ - * / 键触发运算；Enter 或 = 键触发计算；Backspace / Delete 键删除末位；Escape 键全部清除（AC）；% 键触发百分比运算；c 或 C 键清除当前输入（C）。</p>
+      <table>
+        <tbody>
+          <tr><th>数字 / 小数</th><td>0-9、.</td></tr>
+          <tr><th>运算</th><td>+、-、*、/、%</td></tr>
+          <tr><th>求值</th><td>Enter、=</td></tr>
+          <tr><th>删除末位</th><td>Backspace、Delete</td></tr>
+          <tr><th>清除</th><td>c / C；Escape 执行 AC</td></tr>
+        </tbody>
+      </table>
+      <button class="primary-button modal-close" type="button">关闭</button>
+    </div>
+  </div>
+
+  <div id="confirmModal" class="modal-layer" aria-hidden="true">
+    <div class="modal confirm-modal" role="dialog" aria-modal="true" aria-labelledby="confirmTitle">
+      <h2 id="confirmTitle">清空历史记录</h2>
+      <p>确定要清除所有计算历史吗？</p>
+      <div class="dialog-actions">
+        <button id="cancelClear" class="secondary-button" type="button">取消</button>
+        <button id="confirmClear" class="danger-button" type="button">确认</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
