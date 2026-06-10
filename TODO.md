@@ -4,6 +4,8 @@
 
 ## [In Progress]
 - [DEMO-10] 高级计算与常数存储开发周期 (PM) - In Progress
+- [DEMO-29] 高级计算与常数存储需求整改 — 调整 PC 端最大宽度限制 (BA Refinement) - In Progress
+- [DEMO-30] 高级计算与常数存储设计整改 — 补全幂运算/单值对数历史同步及典型值纠偏 (UX Refinement) - In Progress
 
 ## [Review]
 
