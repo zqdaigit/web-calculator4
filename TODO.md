@@ -4,8 +4,7 @@
 
 ## [In Progress]
 - [DEMO-10] 高级计算与常数存储开发周期 (PM) - In Progress
-- [DEMO-19] 高级计算与常数存储需求整改 — 统一常用对数命名为 log (BA Refinement) - In Progress
-- [DEMO-20] 高级计算与常数存储交互设计整改 — 补全缺失按键与交互流程 (UX Refinement) - In Progress
+- [DEMO-21] 高级计算与常数存储功能一致性检查 - Round 2 (Sync) - In Progress
 
 ## [Review]
 
@@ -24,3 +23,5 @@
 - [DEMO-13] 高级计算与常数存储功能需求分析 (BA) - Done
 - [DEMO-14] 高级计算与常数存储功能交互设计 (UX) - Done
 - [DEMO-18] 高级计算与常数存储功能一致性检查 - Round 1 (Sync) - Done
+- [DEMO-19] 高级计算与常数存储需求整改 — 统一常用对数命名为 log (BA Refinement) - Done
+- [DEMO-20] 高级计算与常数存储交互设计整改 — 补全缺失按键与交互流程 (UX Refinement) - Done
